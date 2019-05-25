@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<time.h>
 
+
 #define MAX_LEN 20
 
 void print(int *arr, char *str){
