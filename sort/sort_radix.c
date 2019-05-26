@@ -10,30 +10,31 @@
 #define MAX_RADIX 10
 
 
-void sort_value(int arr[], int (*dst)[MAX_RADIX], int index) {
+void sort_value(int arr[], int dst[]) {
 	int index_arr[RAND_MAX] = { 0 };
 	int tmp_arr[MAX_LEN];
 	memcpy(tmp_arr, arr, MAX_LEN * sizeof(int));
 	for (int i = 0; i < MAX_LEN; ++i) {
-		index_arr[dst[i][index]] += 1;
+		index_arr[dst[i]] += 1;
 	}
 	for (int i = 1; i < MAX_LEN; ++i) {
 		index_arr[i] += index_arr[i - 1];
 	}
 	for (int i = MAX_LEN; i; --i) {
-		arr[index_arr[dst[i - 1][index]] - 1] = tmp_arr[i - 1];
-		index_arr[dst[i - 1][index]] -= 1;
+		arr[index_arr[dst[i - 1]] - 1] = tmp_arr[i - 1];
+		index_arr[dst[i - 1]] -= 1;
 	}
 }
 
-void set_radix_value(int arr[],int (*dst)[MAX_RADIX], int len) {
+void set_radix_value(int arr[],int dst[], int len) {
 	int tmp_arr[MAX_LEN] = { 0 };
+	int div = pow(10, len);
+	int inter;
 	memcpy(tmp_arr, arr, MAX_LEN * sizeof(int));
 	for (int i = 0; i < MAX_LEN; ++i) {
-		for (int j = 0; j < len; ++j) {
-			dst[i][j] = tmp_arr[i] % 10;
-			tmp_arr[i] /= 10;
-		}
+		inter = arr[i];
+		inter /= div;
+		dst[i] = inter % 10;
 	}
 }
 
@@ -61,11 +62,11 @@ int get_radix(int arr[]) {
 }
 
 void sort_radix(int arr[]) {
-	int arr_radix[MAX_LEN][MAX_RADIX] = { 0 };
+	int arr_radix[MAX_LEN] = { 0 };
 	int radix_len = get_radix(arr);
 	for (int i = 0; i < radix_len; ++i) {
-		set_radix_value(arr, arr_radix, radix_len);
-		sort_value(arr, arr_radix, i);
+		set_radix_value(arr, arr_radix, i);
+		sort_value(arr, arr_radix);
 	}
 	
 }
