@@ -1,5 +1,5 @@
 /*
- *b-search-tree 构建二叉搜索树
+ * b-search-tree 构建二叉搜索树
  *
  * tree-search(Tree, key)
  * tree-minimum(Tree)
@@ -7,10 +7,10 @@
  * tree-successor(Tree, Node)
  * tree-prodecessor(Tree, Node)
  * tree-insert(Tree, Node)
- * tree-delete(Tree, Node) //未实现
+ * tree-delete(Tree, Node) 
  * transplant(Tree, Node, Node) //移动一个子树
  *
- * tree-free(Node)//建议加入Tree
+ * tree-free(Node)
  */
 
 
