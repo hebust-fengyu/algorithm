@@ -4,12 +4,18 @@
 
 #define MAX_LEN 20
 
+
 void print(int* pArray, int size, char* c){
 	printf("%s\n", c);
 	for(int i = 0; i < size; ++i){
 		printf("%d,",pArray[i]);
 	}
+	printf("\n");
 }
+
+/*
+
+
 
 void change_array(int* pArray, int begin, int end){
 	int tmp = pArray[end];
@@ -34,7 +40,20 @@ void sort_insert(int* pArray, int size){
 		insert(pArray, size, i);
 	}
 }
-		
+	
+*/
+
+void sort_insert(int* pArray, int size){
+	for(int i = 1; i < size; ++i){
+		int key = pArray[i];
+		int j = i - 1;
+		while(j > -1 && pArray[j] > key){
+			pArray[j+1] = pArray[j];
+			j -= 1;
+		}
+		pArray[j+1]=key;
+	}
+}
 
 
 int main(void){

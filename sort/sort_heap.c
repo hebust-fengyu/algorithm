@@ -46,11 +46,12 @@ void build_max_heap(int* pArray, int max){
 
 void sort_heap(int* pArray, int max){
 	int tmp = 0;
-	for(; max; --max){
-		build_max_heap(pArray, max);
+	build_max_heap(pArray, max);
+	for(; max; ){
 		tmp = pArray[0];
 		pArray[0] = pArray[max-1];
 		pArray[max-1] = tmp;
+		max_heap(pArray, 0, --max);
 	}
 }
 

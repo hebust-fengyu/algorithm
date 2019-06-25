@@ -3,7 +3,7 @@
 #include<math.h>
 
 
-#define MAX_SIZE 10
+#define MAX_SIZE 20
 
 void print(int* pArray, int size, char* c){
 	printf("%s",c);
@@ -36,7 +36,7 @@ void sort_bubble(int* pArray, int size){
 
 int main(void){
 	int array[MAX_SIZE];
-	srand(100);
+	srand(10);
 	for(int i = 0; i < MAX_SIZE; ++i){
 		array[i] = rand() * 100 / RAND_MAX;
 	}
